@@ -10,7 +10,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#A11327"
     },
     "ios": {
       "supportsTablet": true,
@@ -27,8 +27,12 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-router",
-      "expo-splash-screen"
-    ]
+      "expo-router"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "15b5a1db-e63f-465a-b17a-3b46ce5e1d93"
+      }
+    }
   }
 }

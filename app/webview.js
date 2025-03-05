@@ -18,7 +18,7 @@ export default function WebViewScreen() {
     <SafeAreaView style={styles.container}>
       <WebView 
         style={styles.webview}
-        source={{ uri: 'https://www.zelthy.com' }}
+        source={{ uri: 'https://zel3-newmibenefitstaging.zelthy.in/' }}
         javaScriptEnabled={true}
         domStorageEnabled={true}
       />
