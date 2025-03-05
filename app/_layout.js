@@ -2,10 +2,23 @@
 import { Stack } from 'expo-router';
 import { useEffect } from 'react';
 import { useRouter } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
+
+SplashScreen.preventAutoHideAsync();
 
 export default function Layout() {
   const router = useRouter();
   const isLoggedIn = false;
+
+  const hideSplash = async () => {
+    await SplashScreen.hideAsync()
+  }
+  
+  useEffect(() => {
+    setTimeout(() => {
+      hideSplash()
+    }, 2000);
+  }, [])
 
   useEffect(() => {
     if (isLoggedIn) {

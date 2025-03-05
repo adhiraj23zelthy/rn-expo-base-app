@@ -1,10 +1,12 @@
 // app/index.js
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, SafeAreaView } from 'react-native';
 import { router } from 'expo-router';
-
+import {useStore} from '../zustand/index.js';
+import { useRootNavigationState } from 'expo-router';
 export default function PhoneInput() {
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const { phoneNumber, setPhoneNumber } = useStore();
+  const rootNavigationState = useRootNavigationState();
 
   const handleSubmit = () => {
     if (phoneNumber.length >= 10) {
@@ -15,9 +17,13 @@ export default function PhoneInput() {
     }
   };
 
-  const goToWebView = () => {
-    router.push('/webview');
-  };
+// remove this for login flow
+  useEffect(() => {
+    if (rootNavigationState?.key) {
+      router.replace('/webview');
+    }
+  }, [rootNavigationState]);
+  
 
   return (
     <SafeAreaView style={styles.container}>
@@ -41,12 +47,6 @@ export default function PhoneInput() {
           <Text style={styles.buttonText}>Continue</Text>
         </TouchableOpacity>
 
-        {/* <TouchableOpacity 
-          style={[styles.button, styles.webViewButton]} 
-          onPress={goToWebView}
-        >
-          <Text style={styles.buttonText}>Open WebView</Text>
-        </TouchableOpacity> */}
       </View>
     </SafeAreaView>
   );
